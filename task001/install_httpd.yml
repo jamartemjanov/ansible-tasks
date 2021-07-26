@@ -1,0 +1,33 @@
+---
+- hosts: all
+
+  tasks:
+   - name: Upgrade all packages
+     yum:
+       name: '*'
+       state: latest
+
+   - name: Install packages
+     yum:
+      name: 
+        - epel-release
+        - httpd
+        - firewalld
+      state: lastest
+
+   - name: Copy index.html
+     copy:
+      src: index.html
+      dest: /var/www/html/index.html
+
+   - name: Start service httpd, if not started
+     service:
+      name: httpd
+      state: started
+
+   - name: Configure firewalld
+     firewalld:
+       service: http
+       permanent: yes
+       state: enabled
+...

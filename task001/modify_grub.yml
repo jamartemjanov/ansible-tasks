@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+   - name: Ensure SELinux is set to enforcing mode
+     lineinfile:
+       path: /etc/default/grub
+       regexp: "net.ifnames=0"
+       line: "net.ifnames=1"
+...
