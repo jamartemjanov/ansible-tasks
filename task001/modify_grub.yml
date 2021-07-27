@@ -1,13 +1,14 @@
 ---
 - hosts: all
   vars:
-    net.ifname_val = 1
+    net_ifname_val = 1
     biosdevname_val = 1
+
   tasks:
    - name: Ensure SELinux is set to enforcing mode
      lineinfile:
        path: /etc/default/grub
        backrefs: yes
        regexp: '^GRUB_CMDLINE_LINUX='
-       line: 'GRUB_CMDLINE_LINUX="no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames={{ net.ifname_val }} biosdevname={{ biosdevname_val }} elevator=noop"'
+       line: 'GRUB_CMDLINE_LINUX="no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames={{ net_ifname_val }} biosdevname={{ biosdevname_val }} elevator=noop"'
 ...
