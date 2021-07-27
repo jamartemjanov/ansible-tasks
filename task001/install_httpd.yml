@@ -17,8 +17,10 @@
 
    - name: Copy index.html
      copy:
-      src: index.html
+      content: "Welcome to my web server"
       dest: /var/www/html/index.html
+      force: no
+      mode: 0444
 
    - name: Start service httpd, if not started
      service:
