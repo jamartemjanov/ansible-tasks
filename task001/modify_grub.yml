@@ -1,11 +1,11 @@
 ---
 - hosts: all
   vars:
-    net_ifname_val : 1
-    biosdevname_val: 1
+    net_ifname_val : 0
+    biosdevname_val: 0
 
   tasks:
-   - name: Ensure SELinux is set to enforcing mode
+   - name: Add net.ifnames=0 & biosdevname=0 to GRUB_CMDLINE_LINUX
      lineinfile:
        path: /etc/default/grub
        backrefs: yes
