@@ -4,6 +4,7 @@
    - name: Ensure SELinux is set to enforcing mode
      lineinfile:
        path: /etc/default/grub
+       backrefs: yes
        regexp: '^net.ifnames=0'
        replace: 'net.ifnames=1'
 ...
