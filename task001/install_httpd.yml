@@ -8,7 +8,7 @@
         - epel-release
         - httpd
         - firewalld
-      state: lastest
+      state: latest
 
    - name: Copy index.html
      copy:
