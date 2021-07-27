@@ -4,6 +4,6 @@
    - name: Ensure SELinux is set to enforcing mode
      lineinfile:
        path: /etc/default/grub
-       regexp: "net.ifnames=0"
-       line: "net.ifnames=1"
+       regexp: '^(GRUB_CMDLINE_LINUX=(?!.* net.ifnames)\"[^\"]+)(\".*)'
+       line: '\1 net.ifnames=0\2'
 ...
