@@ -1,8 +1,8 @@
 ---
 - hosts: all
   vars:
-    net_ifname_val = 1
-    biosdevname_val = 1
+    net_ifname_val : 1
+    biosdevname_val: 1
 
   tasks:
    - name: Ensure SELinux is set to enforcing mode
