@@ -11,4 +11,10 @@
        backrefs: yes
        regexp: '^GRUB_CMDLINE_LINUX='
        line: 'GRUB_CMDLINE_LINUX="no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames={{ net_ifname_val }} biosdevname={{ biosdevname_val }} elevator=noop"'
+     notyfy:
+      - grub2-mkconfig
+
+  handlers:
+   - name: grub2-mkconfig
+     command: grub2-mkconfig      
 ...
