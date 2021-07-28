@@ -11,7 +11,7 @@
      user:
       name: "{{ item }}"
       comment: '{{ item }}@example.com'
-      password: "{{ password }}"
+      password: {{ password }}
      with_items: 
          - "{{ users }}"
 ...
