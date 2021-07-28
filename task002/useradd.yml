@@ -9,7 +9,7 @@
   tasks:
    - name: Add users
      user:
-      name: {{ item }}
+      name: "{{ item }}"
       comment: '{{ item }}@example.com'
       password: {{ password }}
      with_items: 
