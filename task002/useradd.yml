@@ -1,0 +1,16 @@
+---
+- hosts: all
+  vars:
+   users:
+     - Alice
+     - Bob
+     - Carol
+
+  tasks:
+   - name: Add users
+     user:
+      name: {{ item }}
+      comment: '{{ item }}@example.com'
+      password: {{ password }}
+     with_items: {{ users }}
+...
