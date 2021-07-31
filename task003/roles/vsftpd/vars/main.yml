@@ -1,0 +1,10 @@
+---
+### vsftpd.conf settings
+
+ftp_anon_path: /var/ftp/pub/upload
+anonymous_enable: 'YES'
+connect_from_port_20: 'YES'
+anon_upload_enable: 'YES' 
+no_anon_password: 'YES'
+
+...

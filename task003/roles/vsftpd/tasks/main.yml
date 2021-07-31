@@ -1,0 +1,46 @@
+---
+- name: Install, configure, and start vsftpd
+  block:
+   - name: Set ftpd_anon_write 
+     seboolean:
+       name: ftpd_anon_write
+       state: yes
+       persistent: yes
+
+   - name: Install vsftpd
+     yum:
+      name:
+       - vsftpd
+      state: latest
+     notify: Start and enabled vsftpd
+     
+   - name: Create ftp_anon_path
+     file:
+       path: '{{ ftp_anon_path }}'
+       state: directory
+       owner: root
+       group: root
+       mode: '0755'
+    
+   - name: Configure vsftpd
+     template:
+      src: template/vsftpd.j2
+      dest: /etc/vsftpd.conf
+      mode: '664'
+      backup: yes
+     notify: Restart vsftpd
+
+   - name: Install firewalld
+     yum:
+      name:
+        - firewalld
+      state: latest
+
+   - name: Configure 
+     firewalld:
+       service: ftp
+       permanent: yes
+       state: enabled
+
+  when: ansible_facts["distribution"] == "CentOS"
+...

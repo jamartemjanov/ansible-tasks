@@ -1,0 +1,12 @@
+---
+- name: Start and enabled httpd
+  service:
+   name: httpd
+   state: started
+   enabled: True
+
+- name: Reload httpd
+  service:
+    name: httpd
+    state: reloaded
+...

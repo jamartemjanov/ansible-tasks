@@ -1,0 +1,14 @@
+listen=YES
+anonymous_enable={{ anonymous_enable }}
+local_enable=YES
+write_enable=YES
+xferlog_file={{ anon_upload_enable }}
+
+
+anon_root={{ ftp_anon_path }}
+anon_upload_enable={{ anon_upload_enable }}
+anon_mkdir_write_enable=YES
+no_anon_password=YES
+hide_ids=YES
+chown_uploads=YES
+connect_from_port_20={{ connect_from_port_20 }}

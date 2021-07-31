@@ -1,0 +1,32 @@
+---
+- name: Install, configure, and start httpd
+  block:
+   - name: Install httpd
+     yum:
+      name: 
+        - firewalld
+      state: latest
+     notify: Start and enabled httpd
+
+   - name: Copy index
+     tamplate:
+      src: "{{index_tamplate}}"
+      dest: "{{ dest_index_path }}/index.html"
+      force: no
+      mode: 0444
+     notify: Reload httpd
+    
+   - name: Install firewalld
+     yum:
+      name:
+        - firewalld
+      state: latest
+
+   - name: Configure firewalld
+     firewalld:
+       service: http
+       permanent: yes
+       state: enabled
+
+  when: ansible_facts["distribution"] == "CentOS"
+...
